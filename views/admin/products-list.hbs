@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <style>
+        .product-list {
+            display: flex;
+            justify-content: space-around;
+            border: 1px solid black;
+            padding: 10px;
+            width: 80%;
+            margin: auto;
+        }
+
+        .product-item {
+            border: 1px solid black;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 5px 10px 10px #ccc;
+        }
+
+        .category {
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="/style/navbar.css">
+</head>
+<body>
+    {{> navbar}}
+     
+    <h1>welcome to product list</h1>
+
+    
+   <div class="product-list">
+     {{#each products as |p|}}
+    <div class="product-item">
+        <img src="{{p.imageUrl}}"> <br>
+        <h4>Product name: {{p.name}}</h4>
+        <h4>Product price: {{p.price}}</h4>
+        <div class="button-group">
+            <button>🔍</button>
+           <a href=/admin/products/delete/{{p._id}}> <button>🗑️</button></a>
+           <a href=/admin/products/update/{{p._id}}> <button>✏️</button></a>
+        </div>
+        
+    </div>
+    {{/each}}
+   </div>
+</body>
+</html>
